@@ -1,14 +1,13 @@
 import React from "react";
-import "./../styles/global.css";
 
-const ProductCard = ({ nombre, descripcion, precio, imagen }) => {
+const ProductCard = ({ producto, seleccionarProducto }) => {
+  if (!producto) return null;
+
   return (
-    <div className="producto-card">
-      <img src={imagen} alt={nombre} className="producto-card__img" />
-      <h3 className="producto-card__title">{nombre}</h3>
-      <p className="destacado-card__desc">{descripcion}</p>
-      <p className="producto-card__price">${precio}</p>
-      <button className="producto-card__btn">Comprar</button>
+    <div className="producto-card" onClick={() => seleccionarProducto(producto)}>
+      <img className="producto-card__img" src={producto.img} alt={producto.nombre} />
+      <h3 className="producto-card__title">{producto.nombre}</h3>
+      <p className="producto-card__price">${producto.precio?.toFixed(2)}</p>
     </div>
   );
 };

@@ -1,50 +1,47 @@
 import React from "react";
+import logo from "../assets/img/logo.svg";
 
-const Navbar = () => {
+const Navbar = ({ cambiarVista, cantidadCarrito }) => {
   return (
     <header className="header">
-      <div className="header__container container">
-        {/* Logo */}
-        <div className="header__logo">
-          <img
-            src="/assets/img/logo.svg" // React toma las rutas desde "public/"
-            alt="logo hermanos jota"
-            className="header__logo-img"
-          />
-        </div>
-
-        {/* Navegación */}
+      <div className="header__container">
+        <img
+          src={logo}
+          alt="Logo Hermanos Jota"
+          className="header__logo"
+          onClick={() => cambiarVista("home")}
+          style={{ cursor: "pointer" }}
+        />
         <nav className="navbar">
           <ul className="navbar__list">
             <li className="navbar__item">
-              <a href="/" className="navbar__link navbar__link--active">
+              <a
+                className="navbar__link"
+                onClick={() => cambiarVista("home")}
+              >
                 Inicio
               </a>
             </li>
             <li className="navbar__item">
-              <a href="/productos" className="navbar__link">
+              <a
+                className="navbar__link"
+                onClick={() => cambiarVista("productos")}
+              >
                 Productos
               </a>
             </li>
             <li className="navbar__item">
-              <a href="/contacto" className="navbar__link">
+              <a
+                className="navbar__link"
+                onClick={() => cambiarVista("contacto")}
+              >
                 Contacto
               </a>
             </li>
-
-            <li className="navbar__item">
-              <a href="#" className="navbar__link">
-                <i className="fa-solid fa-cart-shopping"></i>
-              </a>
-              <span className="header__carrito-contador">0</span>
-            </li>
-
-            <li className="navbar__item">
-              <a href="#" className="navbar__link">
-                <i className="fa-solid fa-magnifying-glass"></i>
-              </a>
-            </li>
           </ul>
+          <div className="navbar__carrito">
+            🛒 {cantidadCarrito}
+          </div>
         </nav>
       </div>
     </header>
