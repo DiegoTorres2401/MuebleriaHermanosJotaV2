@@ -39,8 +39,7 @@ app.use((err, req, res, next) => {
     res.json({
         error: {
             status: err.status,
-            message: err.message || 'Ocurrió un error en el servidor.',
-            stack: process.env.NODE_ENV === 'production' ? '🥞' : err.stack,
+            message: err.message || 'Ocurrió un error en el servidor.'
         }
     })
 })
