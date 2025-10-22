@@ -6,6 +6,7 @@ import productos from "../data/productos";
 const ProductosDestacados = ({ seleccionarProducto }) => {
   return (
     <section className="productos-destacados">
+      <div className="productos-destacados__container container">
       <h2 className="productos__title">Productos Destacados</h2>
       <div className="productos-destacados__grid">
         {productos.map((producto) => (
@@ -15,6 +16,7 @@ const ProductosDestacados = ({ seleccionarProducto }) => {
             seleccionarProducto={seleccionarProducto}
           />
         ))}
+      </div>
       </div>
     </section>
   );

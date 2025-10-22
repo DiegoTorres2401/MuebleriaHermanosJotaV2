@@ -1,67 +1,33 @@
 import React, { useState } from "react";
-import Navbar from "./componentes/Navbar";
-import ProductosDestacados from "./componentes/ProductosDestacados";
-import ProductDetail from "./componentes/ProductDetail";
-import ContactForm from "./componentes/ContactForm";
-import Footer from "./componentes/Footer";
+import { Routes, Route, useNavigate } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import ProductosPage from "./pages/ProductosPage";
+import ProductoPage from "./pages/ProductoPage";
+import HomePage from "./pages/HomePage";
+import ContactoPage from "./pages/ContactoPage";
+import Footer from "./components/Footer";
 import "./styles/global.css";
+import NotFound from "./pages/NotFoundPage";
 
 function App() {
-  const [vista, setVista] = useState("home");
+
   const [carrito, setCarrito] = useState([]);
-  const [productoSeleccionado, setProductoSeleccionado] = useState(null);
-
-  const seleccionarProducto = (producto) => {
-    setProductoSeleccionado(producto);
-    setVista("detalle");
-  };
-
-  const agregarAlCarrito = (producto) => {
-    setCarrito([...carrito, producto]);
-  };
-
-  const volverAlCatalogo = () => {
-    setProductoSeleccionado(null);
-    setVista("productos");
-  };
+  const navigate = useNavigate();
 
   return (
-    <div>
-      <Navbar cambiarVista={setVista} cantidadCarrito={carrito.length} />
-
-      {vista === "home" && (
-        <section className="hero">
-          <div className="hero__container">
-            <div className="hero__content">
-              <h1 className="hero__title">Bienvenido a Hermanos Jota</h1>
-              <p className="hero__subtitle">Los mejores muebles para tu hogar</p>
-            </div>
-            <div className="hero__image">
-              <img
-                src="/src/assets/img/EscritorioCosta.png"
-                alt="Banner"
-                className="hero__img"
-              />
-            </div>
-          </div>
-        </section>
-      )}
-
-      {vista === "productos" && !productoSeleccionado && (
-        <ProductosDestacados seleccionarProducto={seleccionarProducto} />
-      )}
-
-      {vista === "detalle" && productoSeleccionado && (
-        <ProductDetail
-          producto={productoSeleccionado}
-          agregarAlCarrito={agregarAlCarrito}
-          volverAlCatalogo={volverAlCatalogo}
-        />
-      )}
-
-      {vista === "contacto" && <ContactForm />}
+    <>
+        <Navbar />
+      <main>
+        <Routes> 
+          <Route path="/" element={<HomePage />} />
+          <Route path="/productos" element={<ProductosPage />} />
+          <Route path="/productos/:id" element={<ProductoPage />} />
+          <Route path="/contacto" element={<ContactoPage />} />
+          <Route path="*" element={<NotFound/>} />
+        </Routes>
+      </main>
       <Footer />
-    </div>
+    </>
   );
 }
 

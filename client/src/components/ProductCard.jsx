@@ -8,6 +8,7 @@ const ProductCard = ({ producto, seleccionarProducto }) => {
       <img className="producto-card__img" src={producto.img} alt={producto.nombre} />
       <h3 className="producto-card__title">{producto.nombre}</h3>
       <p className="producto-card__price">${producto.precio?.toFixed(2)}</p>
+      <button type="button" className="producto-card__btn">Agregar al carrito</button>
     </div>
   );
 };
