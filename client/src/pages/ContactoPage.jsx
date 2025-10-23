@@ -1,11 +1,11 @@
 import React from "react";
+import Contacto from "../components/Contacto";
 
 const ContactoPage = () => {
   return (
-    <div>
-      <h1>Contacto</h1>
-      <p>Si tienes alguna pregunta, no dudes en contactarnos.</p>
-    </div>
+    <>
+    <Contacto/>
+    </>
   );
 };
 

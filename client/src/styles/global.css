@@ -331,11 +331,11 @@ a.navbar__link {
 .contact-form__btn {
   padding: 17px 25px;
   border-radius: 12px;
-  margin-bottom: 20px;
   background-color: #f3f4f6;
   border: 2px solid #f0faf1;
   color: #000000;
   outline: none;
+  margin-bottom: 10px;
 }
 
 .contact-form__txt {
@@ -371,6 +371,13 @@ a.navbar__link {
 
 .contact-form__textarea {
   resize: none;
+  field-sizing: content;
+}
+
+.contact-form__error {
+  color: red;
+  font-size: 0.9em;
+  margin-bottom: 20px;
 }
 
 /* Éxito */
@@ -961,4 +968,72 @@ main {
   .hamburger {
     display: none;
   }
+}
+
+/* ===============================
+   Modal de éxito
+================================= */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 400px;
+  animation: slideIn 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.modal-icon {
+  font-size: 3rem;
+  color: #4caf50;
+  margin-bottom: 1rem;
+}
+
+.modal-content h3 {
+  margin-bottom: 0.5rem;
+  color: var(--color-primario);
+}
+
+.modal-content p {
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.modal-btn {
+  background-color: var(--color-primario);
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.modal-btn:hover {
+  background-color: var(--color-secundario);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { transform: translateY(-50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
