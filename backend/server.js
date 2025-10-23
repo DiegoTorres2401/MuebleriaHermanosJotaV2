@@ -1,10 +1,12 @@
-// server.js
 const express = require('express');
 const productosRoutes = require('./routes/productosRoutes');
 const { loggerMiddleware } = require('./middlewares/logger');
+const cors = require("cors");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+app.use(cors());
 
 // Middleware para logging de peticiones
 app.use(loggerMiddleware);
