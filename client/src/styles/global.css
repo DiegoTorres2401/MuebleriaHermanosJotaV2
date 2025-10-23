@@ -123,22 +123,18 @@ img {
   align-items: center;
 }
 
-.navbar__list a {
+a.navbar__link {
   color: var(--color-primario);
   font-weight: bold;
 }
 
 .navbar__link {
-  color: black;
+  color: var(--color-primario);
   font-weight: 500;
 }
 
 .navbar__list a.navbar__link--active {
   color: var(--color-acento);
-}
-
-.navbar__carrito {
-  margin: 1rem;
 }
 
 /* ===============================
@@ -596,7 +592,6 @@ main {
   transform: translateY(-3px) scale(1.04);
 }
 
-
 /* ===============================
    FOOTER (MÓVIL)
    Pie de página y secciones informativas
@@ -708,6 +703,10 @@ main {
   .navbar__list {
     gap: 0;
   }
+
+  .navbar__list a {
+  font-size: 1.1rem;
+}
 
   .navbar__item {
     display: flex;
@@ -828,5 +827,138 @@ main {
 
   .detalle-producto .botones {
     flex-direction: row;
+  }
+}
+
+/* ===============================
+   Botón hamburguesa
+================================= */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 1001;
+}
+
+.hamburger__line {
+  width: 25px;
+  height: 3px;
+  background-color: var(--color-primario);
+  transition: all 0.3s ease;
+}
+
+.hamburger--open .hamburger__line:nth-child(1) {
+  transform: rotate(45deg) translateY(9px);
+}
+
+.hamburger--open .hamburger__line:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger--open .hamburger__line:nth-child(3) {
+  transform: rotate(-45deg) translateY(-9px);
+}
+
+/* ===============================
+   Carrito (siempre visible)
+================================= */
+.navbar__carrito {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-primario);
+  text-decoration: none;
+  position: relative;
+  z-index: 1001;
+}
+
+.header__carrito-contador {
+  background-color: var(--color-secundario);
+  color: white;
+  border-radius: 50%;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.8rem;
+  min-width: 1.5rem;
+  text-align: center;
+}
+
+/* ===============================
+   Responsive: Menú móvil
+================================= */
+@media (max-width: 768px) {
+  .navbar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .hamburger {
+    display: flex;
+    order: 1; /* Coloca el botón hamburguesa primero */
+  }
+
+  .navbar__carrito {
+    order: 2; /* Carrito después del botón hamburguesa */
+    margin-left: auto; /* Empuja el carrito a la derecha */
+  }
+
+  .navbar__list {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-base);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+    order: 0;
+  }
+
+  .navbar__list--open {
+    transform: translateX(0);
+  }
+
+  .navbar__item {
+    margin: 1rem 0;
+  }
+
+  .navbar__link {
+    font-size: 1.5rem;
+  }
+}
+
+/* ===============================
+   Desktop: Menú horizontal
+================================= */
+@media (min-width: 769px) {
+  .navbar {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .navbar__list {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    align-items: center;
+    order: 1; /* Menú en el medio */
+  }
+
+  .navbar__carrito {
+    order: 2; /* Carrito al final */
+    margin-left: auto;
+  }
+
+  .hamburger {
+    display: none;
   }
 }
