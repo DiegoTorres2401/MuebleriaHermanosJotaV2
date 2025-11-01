@@ -2,6 +2,7 @@ import React from "react";
 import "./../styles/global.css";
 import { Link } from "react-router-dom";
 
+
 const Hero = () => {
   return (
     <section className="hero">
@@ -13,7 +14,7 @@ const Hero = () => {
             </div>
             <div className="hero__image">
               <img
-                src="./img/EscritorioCosta.png"
+                src="/img/EscritorioCosta.png"
                 alt="Banner"
                 className="hero__img"
               />
