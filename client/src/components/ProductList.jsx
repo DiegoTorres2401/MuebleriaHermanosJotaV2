@@ -30,10 +30,10 @@ const ProductList = () => {
   if (error) return <p style={{ color: "red", margin: "20px", textAlign: "center"}}>Error: {error}</p>;
 
   return (
-       <section class="productos-destacados">
-        <div class="productos-destacados__container container">
-          <h2 class="productos__title">Productos</h2>
-          <div class="productos-destacados__grid">
+       <section className="productos-destacados">
+        <div className="productos-destacados__container container">
+          <h2 className="productos__title">Productos</h2>
+          <div className="productos-destacados__grid">
 
             {productos.map(({id, name, image, price}) => (
               <ProductCard key={id} id={id} name={name} image={image} price={price}/>
