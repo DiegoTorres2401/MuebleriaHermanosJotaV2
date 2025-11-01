@@ -1,11 +1,9 @@
 import React from "react";
+import ProductList from "../components/ProductList";
 
 const ProductosPage = () => {
   return (
-    <div>
-      <h1>Productos</h1>
-      <p>Aquí encontrarás una variedad de muebles para tu hogar.</p>
-    </div>
+    <ProductList />
   );
 };
 
