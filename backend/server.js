@@ -1,24 +1,30 @@
-// server.js
+require('dotenv').config();
 const express = require('express');
+const mongoose = require('mongoose');
 const productosRoutes = require('./routes/productosRoutes');
 const { loggerMiddleware } = require('./middlewares/logger');
+const cors = require('cors');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+const MONGO_URI = process.env.MONGO_URI;
 
-// Middleware para logging de peticiones
+app.use(cors());
 app.use(loggerMiddleware);
-
-// Middleware para parsear JSON
 app.use(express.json());
 
-// Rutas de la API
+mongoose.connect(MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+.then(() => console.log('✅ Conectado a MongoDB Atlas'))
+.catch(err => console.error('❌ Error al conectar a MongoDB:', err));
+
 app.use('/api/productos', productosRoutes);
 
-// Ruta de bienvenida
 app.get('/', (req, res) => {
   res.json({
-    message: 'API de Productos - Muebleria Hermanoss Jota',
+    message: 'API de Productos - Muebleria Hermanos Jota',
     endpoints: {
       productos: '/api/productos',
       productoById: '/api/productos/:id'
@@ -26,30 +32,23 @@ app.get('/', (req, res) => {
   });
 });
 
-// Manejador de rutas no encontradas (404)
 app.use((req, res, next) => {
   const error = new Error('Ruta no encontrada');
   error.status = 404;
   next(error);
 });
 
-// Manejo de errores centralizado
 app.use((err, req, res, next) => {
-    res.status(err.status || 500)
-    res.json({
-        error: {
-            status: err.status,
-            message: err.message || 'Ocurrió un error en el servidor.'
-        }
-    })
-})
+  res.status(err.status || 500).json({
+    error: {
+      status: err.status,
+      message: err.message || 'Ocurrió un error en el servidor.'
+    }
+  });
+});
 
-// Iniciar el servidor
 app.listen(PORT, () => {
-  console.log(`Servidor corriendo en http://localhost:${PORT}`);
-  console.log(`Endpoints disponibles:`);
-  console.log(`  - GET http://localhost:${PORT}/api/productos`);
-  console.log(`  - GET http://localhost:${PORT}/api/productos/:id`);
+  console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
 });
 
 module.exports = app;
