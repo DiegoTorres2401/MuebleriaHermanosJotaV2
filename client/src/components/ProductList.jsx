@@ -7,7 +7,7 @@ const ProductList = ({ agregarAlCarrito }) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/productos")
+    fetch("https://muebleriahermanosjotav2.onrender.com/api/productos")
       .then((response) => {
         if (!response.ok) {
           throw new Error("Error al obtener los productos");
