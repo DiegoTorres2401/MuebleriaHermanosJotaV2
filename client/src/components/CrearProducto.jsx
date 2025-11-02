@@ -25,7 +25,7 @@ const CrearProductoPage = () => {
     setError(null);
 
     try {
-      const response = await fetch("http://localhost:3000/api/productos", {
+      const response = await fetch("https://muebleriahermanosjotav2.onrender.com/api/productos", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

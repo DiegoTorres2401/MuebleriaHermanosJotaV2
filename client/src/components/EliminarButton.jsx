@@ -8,7 +8,7 @@ const EliminarButton = ({ productoId }) => {
     const confirmDelete = window.confirm("¿Estás seguro de que deseas eliminar este producto?");
     if (confirmDelete) {
       try {
-        const response = await fetch(`http://localhost:3000/api/productos/${productoId}`, {
+        const response = await fetch(`https://muebleriahermanosjotav2.onrender.com/api/productos/${productoId}`, {
           method: "DELETE",
         });
 
