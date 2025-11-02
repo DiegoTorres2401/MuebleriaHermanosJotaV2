@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route, } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import ProductosPage from "./pages/ProductosPage";
 import ProductoPage from "./pages/ProductoPage";
@@ -17,8 +17,6 @@ function App() {
   const agregarAlCarrito = () => {
     setCantidadCarrito((prevCantidad) => prevCantidad + 1);
   };
-
-  const navigate = useNavigate();
 
   return (
     <>

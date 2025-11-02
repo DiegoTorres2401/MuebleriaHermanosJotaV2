@@ -4,13 +4,8 @@ import CrearProducto from "../components/CrearProducto";
 const CrearProductoPage = () => {
     return (
         <>
-
-        
-        <CrearProducto /> 
-        
+            <CrearProducto /> 
         </>
-
-        
     );
 };
 

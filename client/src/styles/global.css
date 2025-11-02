@@ -176,12 +176,11 @@ a.navbar__link {
   font-weight: 700;
   margin-bottom: 1rem;
   color: var(--color-primario);
-  line-height: 1.1;
   letter-spacing: 0.03em;
   text-shadow: 0 2px 8px #fffbe9;
-  text-align: center; /* Centra el texto horizontalmente */
-  margin: 0 auto; /* Asegura que el margen sea uniforme */
-  line-height: 1.2; /* Mejora el espaciado entre líneas */
+  text-align: center; 
+  margin: 0 auto; 
+  line-height: 1.2;
 }
 
 .hero__subtitle {
@@ -1048,7 +1047,8 @@ main {
     margin: 1rem; /* Agrega espacio externo alrededor del contenedor */
     box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
   }
-}  .imagen-producto img {
+}  
+  .imagen-producto img {
     max-width: 90%; /* Reduce el ancho máximo al 90% del contenedor */
     height: auto; /* Mantiene la proporción de la imagen */
     margin: 0 auto; /* Centra la imagen horizontalmente */
