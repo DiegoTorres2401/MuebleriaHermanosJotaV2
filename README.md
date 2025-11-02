@@ -82,10 +82,6 @@ proyecto/
 │   ├── package.json
 │   └── vite.config.js
 │
-├── docker/                   # (Opcional) Dockerfiles / docker-compose
-│   ├── Dockerfile.backend
-│   ├── Dockerfile.client
-│   └── docker-compose.yml
 └── README.md                 # Documentación principal
 ```
 
@@ -160,8 +156,6 @@ Rutas principales disponibles en el backend bajo /api/productos:
   - 204: eliminado correctamente
   - 404: producto no encontrado
 
-Nota: Algunos endpoints pueden requerir autenticación si se activó (revisa middlewares de auth en /backend/middlewares).
-
 Ejemplo de respuesta GET /api/productos:
 ```json
 [
@@ -204,8 +198,7 @@ Ejemplo de respuesta GET /api/productos:
 1. **App.jsx** mantiene estado principal (productos, carrito, producto seleccionado).
 2. Componentes hijos reciben datos por props.
 3. Funciones de actualización se pasan como props.
-4. Carrito se actualiza con `addToCart()` y puede persistirse.
-5. El backend puede almacenar productos y pedidos en la DB.
+4. El backend puede almacenar productos
 
 ## 📚 Próximas Mejoras / Notas
 
@@ -232,6 +225,7 @@ Ejemplo de respuesta GET /api/productos:
 - Diego Torres - Backend
 
 ---
+
 
 
 
