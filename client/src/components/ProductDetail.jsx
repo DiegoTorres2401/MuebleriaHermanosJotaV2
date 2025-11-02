@@ -21,7 +21,7 @@ const ProductDetail = ({ producto, agregarAlCarrito }) => {
           <button className="producto-card__btn" onClick={() => navigate(-1)}>
             Volver
           </button>
-          <EliminarButton productoId={producto.id} />
+          <EliminarButton productoId={producto._id} />
         </div>
       </div>
     </div>
