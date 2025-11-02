@@ -27,8 +27,8 @@ function App() {
           <Route path="/productos" element={<ProductosPage agregarAlCarrito={agregarAlCarrito} />} />
           <Route path="/productos/:id" element={<ProductoPage agregarAlCarrito={agregarAlCarrito} />} />
           <Route path="/contacto" element={<ContactoPage />} />
-          <Route path="*" element={<NotFound/>} />
           <Route path="/admin/crear-productos" element={<CrearProductoPage />} />
+          <Route path="*" element={<NotFound/>} />
         </Routes>
       </main>
       <Footer />
