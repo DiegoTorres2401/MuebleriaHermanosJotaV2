@@ -1,6 +1,6 @@
 # E-commerce Muebleria Hermanos Jota
 
-Aplicación e-commerce desarrollada con React (Frontend) y Express.js (Backend). Este README ha sido actualizado para reflejar los cambios recientes en main (nuevos endpoints, persistencia y opciones de despliegue).
+Aplicación e-commerce desarrollada con React (Frontend) y Express.js (Backend).
 
 ## 📋 Descripción
 
@@ -239,4 +239,5 @@ Ejemplo de respuesta GET /api/productos:
 - Diego Torres - Backend
 
 ---
+
 
