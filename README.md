@@ -131,13 +131,6 @@ npm run dev
 ```
 La aplicación cliente corre por defecto en `http://localhost:5173`.
 
-### 3. Con Docker (opcional)
-- Construir y levantar con docker-compose:
-```bash
-docker-compose up --build
-```
-(Ver /docker/docker-compose.yml y Dockerfile.* para detalles)
-
 ## 📡 API Endpoints (resumen)
 
 Rutas principales disponibles en el backend bajo /api/productos:
@@ -239,5 +232,6 @@ Ejemplo de respuesta GET /api/productos:
 - Diego Torres - Backend
 
 ---
+
 
 
