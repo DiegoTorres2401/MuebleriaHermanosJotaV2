@@ -8,22 +8,29 @@ import ContactoPage from "./pages/ContactoPage";
 import Footer from "./components/Footer";
 import "./styles/global.css";
 import NotFound from "./pages/NotFoundPage";
+import CrearProductoPage from "./pages/CrearProductopage";
 
 function App() {
 
-  const [carrito, setCarrito] = useState([]);
+  const [cantidadCarrito, setCantidadCarrito] = useState(0);
+
+  const agregarAlCarrito = () => {
+    setCantidadCarrito((prevCantidad) => prevCantidad + 1);
+  };
+
   const navigate = useNavigate();
 
   return (
     <>
-        <Navbar />
+        <Navbar cantidadCarrito={cantidadCarrito} />
       <main>
         <Routes> 
-          <Route path="/" element={<HomePage />} />
-          <Route path="/productos" element={<ProductosPage />} />
-          <Route path="/productos/:id" element={<ProductoPage />} />
+          <Route path="/" element={<HomePage agregarAlCarrito={agregarAlCarrito} />} />
+          <Route path="/productos" element={<ProductosPage agregarAlCarrito={agregarAlCarrito} />} />
+          <Route path="/productos/:id" element={<ProductoPage agregarAlCarrito={agregarAlCarrito} />} />
           <Route path="/contacto" element={<ContactoPage />} />
           <Route path="*" element={<NotFound/>} />
+          <Route path="/admin/crear-productos" element={<CrearProductoPage />} />
         </Routes>
       </main>
       <Footer />

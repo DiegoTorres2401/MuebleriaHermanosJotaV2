@@ -876,7 +876,6 @@ main {
 .navbar__carrito {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
   color: var(--color-primario);
   text-decoration: none;
   position: relative;
@@ -885,7 +884,6 @@ main {
 
 .header__carrito-contador {
   background-color: var(--color-secundario);
-  color: white;
   border-radius: 50%;
   padding: 0.2rem 0.5rem;
   font-size: 0.8rem;

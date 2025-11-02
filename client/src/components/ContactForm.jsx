@@ -19,7 +19,6 @@ const ContactForm = () => {
     try {
       console.log('Formulario enviado:', values);
       
-      // Simula delay de envío (quita esto cuando uses API real)
       await new Promise(resolve => setTimeout(resolve, 1000));
       
       setShowModal(true); // Muestra el modal
@@ -74,7 +73,7 @@ const ContactForm = () => {
         )}
       </Formik>
 
-      {/* Modal de éxito */}
+      
       {showModal && (
         <div className="modal-overlay" onClick={() => setShowModal(false)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>

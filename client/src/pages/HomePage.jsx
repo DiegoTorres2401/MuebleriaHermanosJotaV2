@@ -1,11 +1,11 @@
 import React from "react";
 import Hero from "../components/Hero";
 import ProductosDestacados from "../components/ProductosDestacados";
-const HomePage = () => {
+const HomePage = ({ agregarAlCarrito }) => {
   return (
     <>
       <Hero />
-      <ProductosDestacados/>
+      <ProductosDestacados agregarAlCarrito={agregarAlCarrito} />
     </>
   );
 };

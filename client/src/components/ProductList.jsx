@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ProductCard from "./ProductCard";
 
-const ProductList = () => {
+const ProductList = ({ agregarAlCarrito }) => {
   const [productos, setProductos] = useState([]);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState(null);
@@ -35,8 +35,8 @@ const ProductList = () => {
           <h2 className="productos__title">Productos</h2>
           <div className="productos-destacados__grid">
 
-            {productos.map(({id, name, image, price}) => (
-              <ProductCard key={id} id={id} name={name} image={image} price={price}/>
+            {productos.map(({_id, name, image, price}) => (
+              <ProductCard key={_id} id={_id} name={name} image={image} price={price} agregarAlCarrito={agregarAlCarrito} />
             ))}
 
           </div>
