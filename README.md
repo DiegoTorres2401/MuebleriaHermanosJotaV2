@@ -177,6 +177,7 @@ Ejemplo de respuesta GET /api/productos:
 - Vista de detalle de producto.
 - Carrito de compras con persistencia opcional (localStorage o backend según configuración).
 - Formulario de contacto controlado con validaciones.
+- /admin/crear-productos Formulario de administrador para crear productos a través de la peticion POST
 
 ## 🛠️ Características Técnicas (resumen)
 
@@ -225,6 +226,7 @@ Ejemplo de respuesta GET /api/productos:
 - Diego Torres - Backend
 
 ---
+
 
 
 
