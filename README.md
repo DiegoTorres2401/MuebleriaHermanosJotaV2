@@ -4,7 +4,7 @@ Aplicación e-commerce desarrollada con React (Frontend) y Express.js (Backend).
 
 ## 📋 Descripción
 
-Proyecto fullstack que implementa una tienda online con catálogo de productos, vista de detalle, carrito de compras y formulario de contacto. La aplicación ahora incluye persistencia de datos en una base de datos (configurable por entorno), endpoints adicionales para gestión de productos y opciones básicas de despliegue con Docker.
+Proyecto fullstack que implementa una tienda online con catálogo de productos, vista de detalle, carrito de compras y formulario de contacto. La aplicación ahora incluye persistencia de datos en una base de datos (configurable por entorno), endpoints adicionales para gestión de productos.
 
 ## 🔁 Actualizaciones
 
@@ -16,6 +16,24 @@ Se incorporaron los cambios de refactorización del frontend hacia una arquitect
 - Reorganización de la estructura de componentes introduciendo componentes a nivel "página" (page-level components) y separación clara entre componentes y páginas.
 
 Estas mejoras modernizan la arquitectura de la aplicación, facilitan la escalabilidad y permiten una integración más limpia con el backend para la gestión de productos.
+
+## 🔗 Enlaces de despliegue
+
+A continuación se listan los despliegues públicos del frontend y del backend, así como rutas relevantes para navegación y consumo de la API.
+
+Frontend (Vercel)
+- Sitio principal: https://muebleria-hermanos-jota-v2.vercel.app/
+- Productos (catálogo): https://muebleria-hermanos-jota-v2.vercel.app/productos
+- Contacto: https://muebleria-hermanos-jota-v2.vercel.app/contacto
+- Detalle de producto (ejemplo de ruta con id): https://muebleria-hermanos-jota-v2.vercel.app/productos/_id
+- Panel admin - crear productos: https://muebleria-hermanos-jota-v2.vercel.app/admin/crear-productos
+
+Backend (Render)
+- API pública: https://muebleriahermanosjotav2.onrender.com
+- Endpoint productos (GET/POST): https://muebleriahermanosjotav2.onrender.com/api/productos
+- Endpoint producto por id (GET/PUT/DELETE): https://muebleriahermanosjotav2.onrender.com/api/productos_id
+
+> Nota: Reemplazar `_id` en la ruta de detalle por el id real del producto (por ejemplo `/productos/648a1f2b...`) al navegar o consumir la API.
 
 ## 🔧 Tabla de cambios (por archivo)
 
@@ -226,6 +244,7 @@ Ejemplo de respuesta GET /api/productos:
 - Diego Torres - Backend
 
 ---
+
 
 
 
