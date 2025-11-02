@@ -2,7 +2,7 @@ import React from "react";
 import Hero from "./Hero";
 import ProductosDestacados from "./ProductosDestacados";
 
-const Main = () => {
+const Main = ({ agregarAlCarrito }) => {
   return (
     <main>
       <Hero />
