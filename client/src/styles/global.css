@@ -179,7 +179,9 @@ a.navbar__link {
   line-height: 1.1;
   letter-spacing: 0.03em;
   text-shadow: 0 2px 8px #fffbe9;
-  text-align: left;
+  text-align: center; /* Centra el texto horizontalmente */
+  margin: 0 auto; /* Asegura que el margen sea uniforme */
+  line-height: 1.2; /* Mejora el espaciado entre líneas */
 }
 
 .hero__subtitle {
@@ -512,6 +514,10 @@ main {
   gap: 20px;
   max-width: 900px;
   margin: auto;
+  background-color: white;
+  margin-top: 5rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 /* Los contenedores consiguientes de imagen y descripcion*/
 .imagen-producto,
@@ -582,7 +588,7 @@ main {
   padding: 0.7rem 1.2rem;
   background: linear-gradient(90deg, var(--color-acento), var(--color-premium));
   color: #fff;
-  border-radius: 30px;
+  border-radius: 25px;
   text-decoration: none;
   font-weight: bold;
   transition: background 0.3s, color 0.3s, box-shadow 0.3s, transform 0.2s;
@@ -1034,4 +1040,33 @@ main {
 @keyframes slideIn {
   from { transform: translateY(-50px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
+}
+
+@media (max-width: 600px) {
+  .container-producto {
+    padding: 1rem; /* Agrega espacio interno en todos los lados */
+    margin: 1rem; /* Agrega espacio externo alrededor del contenedor */
+    box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+  }
+}  .imagen-producto img {
+    max-width: 90%; /* Reduce el ancho máximo al 90% del contenedor */
+    height: auto; /* Mantiene la proporción de la imagen */
+    margin: 0 auto; /* Centra la imagen horizontalmente */
+    display: block; /* Asegura que se comporte como un bloque */
+  }
+
+@media (min-width: 601px) and (max-width: 1024px) {
+  .container-producto {
+    padding: 2rem; /* Agrega espacio interno */
+    margin: 2rem auto; /* Centra el contenedor y agrega espacio externo */
+    max-width: 90%; /* Asegura que no ocupe todo el ancho */
+    box-sizing: border-box; /* Incluye el padding en el ancho total */
+  }
+}
+
+@media (min-width: 768px) {
+  .hero__title {
+    text-align: left; /* Alinea el texto a la izquierda */
+    font-size: 3rem; /* Aumenta el tamaño del texto */
+  }
 }
