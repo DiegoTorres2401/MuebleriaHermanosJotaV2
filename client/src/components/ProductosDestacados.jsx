@@ -33,12 +33,15 @@ const ProductosDestacados = ({ agregarAlCarrito }) => {
     <section className="productos-destacados">
       <div className="productos-destacados__container container">
         <h2 className="productos__title">Productos Destacados</h2>
+        <p className="productos__subtitle">Articulos que te pueden interesar</p>
         <div className="productos-destacados__grid">
           {productos.map(({_id, name, image, price}) => (
             <ProductCard key={_id} id={_id} name={name} image={image} price={price} agregarAlCarrito={agregarAlCarrito} />
           ))}
         </div>
+        <div className="producto-card__btn-container">
         <Link to="/productos" className="producto-card__btn">Ver todos los productos</Link>
+        </div>
       </div>
     </section>
   );

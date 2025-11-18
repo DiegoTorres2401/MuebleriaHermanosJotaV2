@@ -8,10 +8,11 @@ const Hero = () => {
     <section className="hero">
           <div className="hero__container container">
             <div className="hero__content">
-              <h1 className="hero__title">Hermanos Jota</h1>
-              <p className="hero__subtitle">Muebles de calidad para tu hogar</p>
-              <Link to="/productos" className="hero__btn">Ver Productos</Link>
+              <h1 className="hero__title"> Muebleria Hermanos Jota</h1>
+              <p className="hero__subtitle">Descubre nuestra colección de muebles artesanales, diseñados para traer calidez, confort y estilo a tu hogar.</p>
+              <Link to="/productos" className="hero__btn">Explorar Colección</Link>
             </div>
+
             <div className="hero__image">
               <img
                 src="/img/escritorio-costa.png"
@@ -20,7 +21,7 @@ const Hero = () => {
               />
             </div>
           </div>
-        </section>
+    </section>
 
   );
 };

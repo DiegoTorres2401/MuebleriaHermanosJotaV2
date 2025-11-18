@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from "/img/logo.svg";
 
 const Navbar = ({ cantidadCarrito }) => {
@@ -19,23 +19,34 @@ const Navbar = ({ cantidadCarrito }) => {
           {/* Menú de navegación */}
           <ul className={`navbar__list ${menuOpen ? 'navbar__list--open' : ''}`}>
             <li className="navbar__item">
-              <Link to="/" className="navbar__link" onClick={closeMenu}>
+              <NavLink 
+                to="/" 
+                className={({ isActive }) => `navbar__link ${isActive ? 'navbar__link--active' : ''}`}
+                onClick={closeMenu}
+              >
                 Inicio
-              </Link>
+              </NavLink>
             </li>
             <li className="navbar__item">
-              <Link to="/productos" className="navbar__link" onClick={closeMenu}>
+              <NavLink 
+                to="/productos" 
+                className={({ isActive }) => `navbar__link ${isActive ? 'navbar__link--active' : ''}`}
+                onClick={closeMenu}
+              >
                 Productos
-              </Link>
+              </NavLink>
             </li>
             <li className="navbar__item">
-              <Link to="/contacto" className="navbar__link" onClick={closeMenu}>
+              <NavLink 
+                to="/contacto" 
+                className={({ isActive }) => `navbar__link ${isActive ? 'navbar__link--active' : ''}`}
+                onClick={closeMenu}
+              >
                 Contacto
-              </Link>
+              </NavLink>
             </li>
           </ul>
 
-          {/* Botón hamburguesa (solo visible en móvil) */}
           <button 
             className={`hamburger ${menuOpen ? 'hamburger--open' : ''}`}
             onClick={toggleMenu} 
@@ -46,9 +57,8 @@ const Navbar = ({ cantidadCarrito }) => {
             <span className="hamburger__line"></span>
           </button>
 
-          {/* Carrito (siempre visible) */}
           <Link to="/carrito" className="navbar__carrito">
-            <i className="fa-solid fa-cart-shopping"></i>
+            <span className="material-symbols-outlined">local_mall</span>
             <span className="header__carrito-contador">{cantidadCarrito}</span>
           </Link>
         </nav>
