@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const productosRoutes = require('./routes/productosRoutes');
+const ordenesRoutes = require("./routes/ordenesRoutes"); // aca esta las rutas relacionadas a ordenes
 const { loggerMiddleware } = require('./middlewares/logger');
 const cors = require('cors');
 
@@ -46,6 +47,8 @@ app.use((err, req, res, next) => {
     }
   });
 });
+
+app.use('/api/ordenes', ordenesRoutes);
 
 app.listen(PORT, () => {
   console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
