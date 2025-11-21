@@ -2,6 +2,8 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const productosRoutes = require('./routes/productosRoutes');
+const userRoutes = require('./routes/userRoutes');
+const authRoutes = require('./routes/authRoutes');
 const { loggerMiddleware } = require('./middlewares/logger');
 const cors = require('cors');
 
@@ -21,6 +23,11 @@ mongoose.connect(MONGO_URI, {
 .catch(err => console.error('❌ Error al conectar a MongoDB:', err));
 
 app.use('/api/productos', productosRoutes);
+
+app.use('/api/users', userRoutes);
+
+app.use('/api/auth', authRoutes);
+
 
 app.get('/', (req, res) => {
   res.json({

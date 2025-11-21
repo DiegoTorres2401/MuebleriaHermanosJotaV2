@@ -1,7 +1,7 @@
 const Product = require('../models/productos');
 const createError = require('http-errors');
 
-const getProductos = async (req, res, next) => {
+exports.getProductos = async (req, res, next) => {
   try {
     const productos = await Product.find();
     res.json(productos);
@@ -10,7 +10,7 @@ const getProductos = async (req, res, next) => {
   }
 }; 
 
-const getProducto = async (req, res, next) => {
+exports.getProducto = async (req, res, next) => {
   try {
     const producto = await Product.findById(req.params.id);
     if (!producto) return next(createError(404, 'El producto solicitado no existe'));
@@ -20,7 +20,7 @@ const getProducto = async (req, res, next) => {
   }
 };
 
-const postProducto = async (req, res, next) => {
+exports.postProducto = async (req, res, next) => {
   try {
     const nuevoProducto = new Product(req.body);
     const productoGuardado = await nuevoProducto.save();
@@ -30,7 +30,7 @@ const postProducto = async (req, res, next) => {
   }
 };
 
-const putProducto = async (req, res, next) => {
+exports.putProducto = async (req, res, next) => {
   try {
     const productoActualizado = await Product.findByIdAndUpdate(
       req.params.id,
@@ -44,7 +44,7 @@ const putProducto = async (req, res, next) => {
   }
 };
 
-const deleteProducto = async (req, res, next) => {
+exports.deleteProducto = async (req, res, next) => {
   try {
     const productoEliminado = await Product.findByIdAndDelete(req.params.id);
     if (!productoEliminado) return next(createError(404, 'El producto solicitado no existe'));
@@ -52,12 +52,4 @@ const deleteProducto = async (req, res, next) => {
   } catch (err) {
     next(createError(500, 'Error al eliminar el producto'));
   }
-};
-
-module.exports = {
-  getProductos, 
-  getProducto,
-  postProducto,
-  putProducto,
-  deleteProducto
 };
