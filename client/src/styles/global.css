@@ -828,32 +828,26 @@ main {
 ================================= */
 .hamburger {
   display: none;
-  flex-direction: column;
-  gap: 4px;
   background: none;
   border: none;
   cursor: pointer;
   padding: 0.5rem;
   z-index: 1001;
+  color: var(--color-primario);
 }
 
+.hamburger .material-symbols-outlined {
+  font-size: 2rem;
+  transition: transform 0.3s ease;
+}
+
+.hamburger--open .material-symbols-outlined {
+  transform: rotate(90deg);
+}
+
+/* Elimina las líneas antiguas del hamburger */
 .hamburger__line {
-  width: 25px;
-  height: 3px;
-  background-color: var(--color-primario);
-  transition: all 0.3s ease;
-}
-
-.hamburger--open .hamburger__line:nth-child(1) {
-  transform: rotate(45deg) translateY(9px);
-}
-
-.hamburger--open .hamburger__line:nth-child(2) {
-  opacity: 0;
-}
-
-.hamburger--open .hamburger__line:nth-child(3) {
-  transform: rotate(-45deg) translateY(-9px);
+  display: none;
 }
 
 /* ===============================
