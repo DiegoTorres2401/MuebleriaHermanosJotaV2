@@ -1,9 +1,31 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { useAuthContext } from "../context/AuthContext";
 
-const ProductDetail = ({ producto, agregarAlCarrito, eliminarProducto }) => {
+const ProductDetail = ({ agregarAlCarrito, eliminarProducto }) => {
   const navigate = useNavigate();
+  const { id } = useParams(); // Obtener el ID desde la URL
+  const { isAdmin } = useAuthContext(); // ← Agregar esto
+  const [producto, setProducto] = useState(null);
+  const [cargando, setCargando] = useState(true);
   const [cantidad, setCantidad] = useState(1);
+
+  // Fetch del producto usando el ID de la URL
+  useEffect(() => {
+    const fetchProducto = async () => {
+      try {
+        const response = await fetch(`https://muebleriahermanosjotav2.onrender.com/api/productos/${id}`);
+        const data = await response.json();
+        setProducto(data);
+        setCargando(false);
+      } catch (error) {
+        console.error('Error al cargar el producto:', error);
+        setCargando(false);
+      }
+    };
+
+    fetchProducto();
+  }, [id]);
 
   const incrementarCantidad = () => setCantidad(prev => prev + 1);
   const decrementarCantidad = () => {
@@ -35,12 +57,18 @@ const ProductDetail = ({ producto, agregarAlCarrito, eliminarProducto }) => {
     }
   };
 
+  if (cargando) {
+    return <div className="product-detail-page">Cargando...</div>;
+  }
+
+  if (!producto) {
+    return <div className="product-detail-page">Producto no encontrado</div>;
+  }
+
   return (
     <div className="product-detail-page">
       <button className="product-detail__back" onClick={() => navigate(-1)}>
-        <span class="material-symbols-outlined">
-arrow_back
-</span> Volver a la tienda
+        <span className="material-symbols-outlined">arrow_back</span> Volver a la tienda
       </button>
 
       <div className="container-producto">
@@ -84,8 +112,6 @@ arrow_back
             </div>
           </div>
 
-          { /* BOTONES DE ACCIÓN */ }
-
           <div className="detalle-producto__acciones">
             <button
               className="detalle-producto__accion"
@@ -94,13 +120,15 @@ arrow_back
               Añadir al Carrito
             </button>
 
-            <button
-              className="detalle-producto__eliminar"
-              onClick={handleEliminar}
-            > <span class="material-symbols-outlined">
-delete
-</span>Eliminar
-            </button>
+            {isAdmin && (
+              <button
+                className="detalle-producto__eliminar"
+                onClick={handleEliminar}
+              >
+                <span className="material-symbols-outlined">delete</span>
+                Eliminar
+              </button>
+            )}
           </div>
         </div>
       </div>
