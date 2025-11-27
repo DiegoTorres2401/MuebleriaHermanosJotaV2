@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ProductDetail from "../components/ProductDetail";
+import { useCarrito } from "../context/CarritoContext";
 
-const ProductoPage = ({ agregarAlCarrito }) => {
-  const { id } = useParams(); // Obtiene el ID del producto desde la URL
+const ProductoPage = () => {
+  const { id } = useParams(); 
+  const { agregarAlCarrito } = useCarrito();  // ⬅💥 obtener función del contexto
+
   const [producto, setProducto] = useState(null);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState(null);
@@ -28,9 +31,18 @@ const ProductoPage = ({ agregarAlCarrito }) => {
   }, [id]);
 
   if (cargando) return <p>Cargando producto...</p>;
-  if (error) return <p style={{ color: "red", margin: "20px", textAlign: "center"}}>Error: {error}</p>;
+  if (error) return (
+    <p style={{ color: "red", margin: "20px", textAlign: "center" }}>
+      Error: {error}
+    </p>
+  );
 
-  return <ProductDetail producto={producto} agregarAlCarrito={agregarAlCarrito} />;
+  return (
+    <ProductDetail 
+      producto={producto} 
+      agregarAlCarrito={() => agregarAlCarrito(producto)}  // ⬅ enviar el producto
+    />
+  );
 };
 
 export default ProductoPage;
