@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useAuthContext } from "../context/AuthContext";
+const base_url = import.meta.env.VITE_BASE_URL;
 
 export default function MisPedidosPage() {
   const { token } = useAuthContext();
@@ -7,7 +8,7 @@ export default function MisPedidosPage() {
 
   useEffect(() => {
     const obtenerPedidos = async () => {
-      const res = await fetch("http://localhost:4000/ordenes/mis-pedidos", {
+      const res = await fetch(`${base_url}/ordenes/mis-pedidos`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

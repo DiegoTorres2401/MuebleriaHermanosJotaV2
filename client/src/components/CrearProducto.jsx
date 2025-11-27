@@ -3,11 +3,13 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
 
+const base_url = import.meta.env.VITE_BASE_URL;
+
 const CrearProductoPage = () => {
   const navigate = useNavigate();
   const [error, setError] = useState(null);
 
-  // Esquema de validación con Yup
+  // Validación Yup
   const schema = Yup.object().shape({
     name: Yup.string().required("El nombre es obligatorio"),
     price: Yup.number()
@@ -22,21 +24,19 @@ const CrearProductoPage = () => {
   });
 
   const handleSubmit = async (values, { resetForm }) => {
-    setError(null);
+   setError(null);
 
     try {
-      const response = await fetch("https://muebleriahermanosjotav2.onrender.com/api/productos", {
+      const res = await fetch(`${base_url}/productos`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),
       });
 
-      if (response.ok) {
+      if (res.ok) {
         alert("Producto creado con éxito");
         resetForm();
-        navigate("/productos"); // Redirige al catálogo
+        navigate("/productos");
       } else {
         setError("Error al crear el producto. Inténtalo de nuevo.");
       }
@@ -65,73 +65,37 @@ const CrearProductoPage = () => {
 
             <div className="contact-form__group">
               <label htmlFor="name" className="contact-form__label">Nombre</label>
-              <Field
-                type="text"
-                name="name"
-                id="name"
-                placeholder="Nombre del producto"
-                className="contact-form__input"
-              />
+              <Field type="text" name="name" id="name" className="contact-form__input" />
               <ErrorMessage name="name" component="div" className="contact-form__error" />
             </div>
 
             <div className="contact-form__group">
               <label htmlFor="price" className="contact-form__label">Precio</label>
-              <Field
-                type="number"
-                name="price"
-                id="price"
-                placeholder="Precio del producto"
-                className="contact-form__input"
-              />
+              <Field type="number" name="price" id="price" className="contact-form__input" />
               <ErrorMessage name="price" component="div" className="contact-form__error" />
             </div>
 
             <div className="contact-form__group">
               <label htmlFor="description" className="contact-form__label">Descripción</label>
-              <Field
-                as="textarea"
-                name="description"
-                id="description"
-                placeholder="Descripción del producto"
-                className="contact-form__textarea"
-              />
+              <Field as="textarea" name="description" id="description" className="contact-form__textarea" />
               <ErrorMessage name="description" component="div" className="contact-form__error" />
             </div>
 
             <div className="contact-form__group">
               <label htmlFor="image" className="contact-form__label">URL de la Imagen</label>
-              <Field
-                type="text"
-                name="image"
-                id="image"
-                placeholder="URL de la imagen"
-                className="contact-form__input"
-              />
+              <Field type="text" name="image" id="image" className="contact-form__input" />
               <ErrorMessage name="image" component="div" className="contact-form__error" />
             </div>
 
             <div className="contact-form__group">
               <label htmlFor="ficha" className="contact-form__label">Ficha Técnica</label>
-              <Field
-                as="textarea"
-                name="ficha"
-                id="ficha"
-                placeholder="Ficha técnica del producto"
-                className="contact-form__textarea"
-              />
+              <Field as="textarea" name="ficha" id="ficha" className="contact-form__textarea" />
               <ErrorMessage name="ficha" component="div" className="contact-form__error" />
             </div>
 
             <div className="contact-form__group">
               <label htmlFor="garantia" className="contact-form__label">Garantía</label>
-              <Field
-                type="text"
-                name="garantia"
-                id="garantia"
-                placeholder="Garantía del producto"
-                className="contact-form__input"
-              />
+              <Field type="text" name="garantia" id="garantia" className="contact-form__input" />
               <ErrorMessage name="garantia" component="div" className="contact-form__error" />
             </div>
 

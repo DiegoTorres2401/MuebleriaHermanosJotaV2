@@ -7,9 +7,10 @@ export default function CheckoutPage() {
     const { items, limpiarCarrito } = useCarrito();
     const { token } = useAuthContext();
     const navigate = useNavigate();
-
+    const BASE_URL = import.meta.env.VITE_BASE_URL;
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
+    const base_url = import.meta.env.VITE_BASE_URL;
 
     const total = items.reduce(
         (acc, item) => acc + item.price * item.cantidad,
@@ -21,7 +22,7 @@ export default function CheckoutPage() {
             setLoading(true);
             setError("");
 
-            const res = await fetch("http://localhost:4000/ordenes", {
+            const res = await fetch(`${base_url}/ordenes`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

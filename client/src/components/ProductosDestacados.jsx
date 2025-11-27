@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ProductCard from "./ProductCard";
+const base_url = import.meta.env.VITE_BASE_URL;
+
 
 const ProductosDestacados = ({ agregarAlCarrito }) => {
   const [productos, setProductos] = useState([]);
@@ -8,7 +10,7 @@ const ProductosDestacados = ({ agregarAlCarrito }) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch("https://muebleriahermanosjotav2.onrender.com/api/productos")
+    fetch(`${base_url}/productos`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Error al obtener los productos");

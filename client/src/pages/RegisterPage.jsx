@@ -2,6 +2,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+const base_url = import.meta.env.VITE_BASE_URL;
 
 const RegisterPage = () => {
   const [showModal, setShowModal] = useState(false);
@@ -30,7 +31,7 @@ const RegisterPage = () => {
     setError(null);
 
     try {
-      const response = await fetch("http://localhost:3000/api/auth/register", {
+      const response = await fetch(`${base_url}/auth/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),
