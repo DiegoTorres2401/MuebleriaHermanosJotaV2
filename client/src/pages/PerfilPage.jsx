@@ -9,21 +9,26 @@ const PerfilPage = () => {
   }, [userActual]);
 
   if (!userActual) {
-    return <p>Cargando perfil...</p>;
+    return <p className="perfil-cargando">Cargando perfil...</p>;
   }
 
   return (
-    <>
-      <h1>Perfil de Usuario</h1>
+    <div className="perfil-container">
+      <div className="perfil-card">
 
-      <div>
-        {userActual.message && <p>{userActual.message}!!!</p>}
+        <h1 className="perfil-titulo">Mi Perfil</h1>
 
-        <p><strong>Nombre:</strong> {userActual.user?.nombre}</p>
-        <p><strong>Email:</strong> {userActual.user?.email}</p>
-        <p><strong>Rol:</strong> {userActual.user?.role}</p>
+        {userActual.message && (
+          <p className="perfil-bienvenida">{userActual.message} 👋</p>
+        )}
+
+        <div className="perfil-datos">
+          <p><span>Nombre:</span> {userActual.user?.nombre}</p>
+          <p><span>Email:</span> {userActual.user?.email}</p>
+          <p><span>Rol:</span> {userActual.user?.role}</p>
+        </div>
       </div>
-    </>
+    </div>
   );
 };
 

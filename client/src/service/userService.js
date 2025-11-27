@@ -14,9 +14,9 @@ export async function fetchUsersPorId(id) {
   return res.json();
 }
 
-// Crear usuario
+// Crear usuario (USO DE AUTH REGISTER)
 export async function crearUser(data) {
-  const res = await fetch(`${base_url}/users/register`, {
+  const res = await fetch(`${base_url}/auth/register`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
@@ -26,7 +26,19 @@ export async function crearUser(data) {
   return res.json();
 }
 
-// Obtener perfil del usuario logueado
+// Login (te lo agrego porque faltaba)
+export async function loginUser(data) {
+  const res = await fetch(`${base_url}/auth/login`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+  });
+
+  if (!res.ok) throw new Error('Error al iniciar sesión');
+  return res.json();
+}
+
+// Obtener perfil del usuario logueado (FUNCIONA)
 export async function PerfilUsuario(token) {
   try {
     if (!token) {
@@ -42,13 +54,12 @@ export async function PerfilUsuario(token) {
     });
 
     if (!response.ok) {
-      const text = await response.text(); // Para debug si hay HTML
+      const text = await response.text();
       console.error("Error del backend:", text);
       throw new Error("No se pudo acceder al perfil.");
     }
 
-    const data = await response.json();
-    return data;
+    return await response.json();
 
   } catch (error) {
     console.error("Error al obtener el perfil:", error.message);

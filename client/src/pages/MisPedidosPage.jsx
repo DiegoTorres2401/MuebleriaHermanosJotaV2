@@ -5,21 +5,35 @@ const base_url = import.meta.env.VITE_BASE_URL;
 export default function MisPedidosPage() {
   const { token } = useAuthContext();
   const [pedidos, setPedidos] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const obtenerPedidos = async () => {
-      const res = await fetch(`${base_url}/ordenes/mis-pedidos`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      try {
+        const res = await fetch(`${base_url}/ordenes/usuario`, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
 
-      const data = await res.json();
-      setPedidos(data);
+        if (!res.ok) {
+          throw new Error("No se pudieron obtener los pedidos");
+        }
+
+        const data = await res.json();
+        setPedidos(data);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
     };
 
-    obtenerPedidos();
+    if (token) obtenerPedidos();
   }, [token]);
+
+  if (loading) return <p>Cargando pedidos...</p>;
 
   return (
     <div>
@@ -31,7 +45,7 @@ export default function MisPedidosPage() {
         <ul>
           {pedidos.map((pedido) => (
             <li key={pedido._id}>
-              Pedido #{pedido._id} — Total: ${pedido.total}
+              <strong>Pedido #{pedido._id}</strong> — Total: ${pedido.total}
             </li>
           ))}
         </ul>
