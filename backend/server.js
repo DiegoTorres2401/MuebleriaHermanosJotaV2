@@ -2,12 +2,8 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const productosRoutes = require('./routes/productosRoutes');
-<<<<<<< HEAD
 const userRoutes = require('./routes/userRoutes');
 const authRoutes = require('./routes/authRoutes');
-=======
-const ordenesRoutes = require("./routes/ordenesRoutes"); // aca esta las rutas relacionadas a ordenes
->>>>>>> backend-orders
 const { loggerMiddleware } = require('./middlewares/logger');
 const cors = require('cors');
 
