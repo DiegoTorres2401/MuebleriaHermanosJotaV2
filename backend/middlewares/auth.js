@@ -17,4 +17,8 @@ try {
 } catch (error) {
   return res.status(401).json({ msg: "Token inválido." });
 }
+const decoded = jwt.verify(token, process.env.JWT_SECRET);
+console.log("🟢 TOKEN DECODIFICADO:", decoded);  // <---- AGREGA ESTO
+req.user = decoded;
+
 };
