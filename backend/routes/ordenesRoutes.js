@@ -7,8 +7,12 @@ const auth = require("../middlewares/auth");
 router.post("/", auth, async (req, res, next) => {
   try {
     const nuevaOrden = new Orden({
-      usuario: req.usuario,
-      items: req.body.items,
+      usuario: req.user.id,
+      items: req.body.items.map(item => ({
+        nombre: item.name,
+        precio: item.price,
+        cantidad: item.cantidad,
+      })),
       total: req.body.total,
     });
 
@@ -16,6 +20,7 @@ router.post("/", auth, async (req, res, next) => {
     res.status(201).json(ordenGuardada);
 
   } catch (err) {
+    console.error(err);
     next(createError(500, "Error al crear la orden"));
   }
 });
