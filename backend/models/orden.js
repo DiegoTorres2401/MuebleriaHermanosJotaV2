@@ -1,10 +1,10 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const ordenSchema = new mongoose.Schema(
   {
     usuario: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Usuario", // Cambiar referencia cuando se tenga el model usuario
+      ref: "User",
       required: true,
     },
     items: [
@@ -26,4 +26,4 @@ const ordenSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-export default mongoose.model("Orden", ordenSchema);
+module.exports = mongoose.model("Orden", ordenSchema);

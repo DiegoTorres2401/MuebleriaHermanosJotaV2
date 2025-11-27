@@ -40,6 +40,8 @@ app.get('/', (req, res) => {
   });
 });
 
+app.use('/api/ordenes', ordenesRoutes);
+
 app.use((req, res, next) => {
   const error = new Error('Ruta no encontrada');
   error.status = 404;
@@ -55,7 +57,7 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.use('/api/ordenes', ordenesRoutes);
+
 
 app.listen(PORT, () => {
   console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);

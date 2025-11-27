@@ -63,7 +63,8 @@ exports.login= async (req, res) => {
   })
   
 } catch (err) {
-  console.error("❌ Error en login:", err.message);
-    res.status(500).json({ error: 'Error en el servidor' });
-  }
+  console.error("❌ Error en login:", err);   // <-- LOG COMPLETO
+  res.status(500).json({ error: 'Error en el servidor' });
+}
+
 }
